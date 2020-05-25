@@ -32,6 +32,19 @@ As operações de Depósito, Pagamento e Resgate possuem regras específicas:
 3. Garantir que a conta tenha saldo suficiente para a transação;
 4. Não permitir resgates acima de R$ 30.000,00.
 
+## Domínios
+Foram criados 3 modelos de domínios no sistema:
+1. __Pessoas__;
+2. __Contas Correntes__;
+3. __Operações__.
+
+## Detalhamento da Codificação
+Os modelos de __Pessoas__ e __ContasCorrentes__ possuem apenas uma operação inicial de cadastramento de conta, após seu cadastramento sempre será utilizado essa __ContaCorrente__ para as __Operações__. 
+Como se trata apenas de um código para dar uma visibilidade de conduta e escrita de código, foi criado apenas a possibilidade de criação da __ContaCorrente__, porém nessa criação simula uma execução "transacional" pois na mesma execução é realizado a inserção de __Pessoas__ e de __ContasCorrentes__.
+
+A tela principal do sistema é a tela da __ContaCorrente__ onde mostra a __Pessoa__, dona da __ContaCorrente__, o saldo total e a data da Última Movimentação. A baixa é exibido o histórico de __Operações__ da __ContaCorrente__. 
+Para que a verificação do rendimento da __ContaCorrente__ seja realizada, sempre que a listagem é acessa é executado uma verificação de existência de __Operação__ no dia corrente, caso não tenha tido, é verificado a quantidade de dias sem movimentação e se aplica a correção monetária usando o índice CDI como rendimento diário. A contabilização do índice e taxa diária está estática no código. Como se trata de um índice volátil, contabilizei-o pegando o índice acumalado dos últimos 12 meses e dividi pela totalidade de dias úteis no ano. Desse resultado apliquei a formula de juros compostos sobre este índice, a variante de tempo peguei a diferença de dias úteis entre a data da última movimentação com o dia atual. Dessa verificação lanço uma __Operação__ de rendimento e atualizo o saldo na __ContaCorrente__.
+
 ## Detalhamento Técnico
 O App foi desenvolvido sob a plataforma .Net 3.1
 
@@ -44,9 +57,10 @@ Nos demais projetos da solução foram utilizados os seguintes componentes
 2. Banco de Dados MySql - Pacote: MySql.Data.EntityFrameworkCore (v8.0.20)
 3. AutoMapper - Pacote: AutoMapper.Extensions.Microsoft.DependencyInjection (v7.0.0)
 
-Para os testes foram utilizados os componentes:
+### Cobertura de Testes
+Os testes desenvolvidos foram criados para dar sustentação nas principais operações do sistema, como a abertura de conta, depósito, pagamentos e resgate.
+
+Para os casos foram utilizados os componentes:
 1. Moq - Pacote: Moq (v4.14.1)
 2. xUnit - Pacote: xunit (v2.4.0)
 3. FluentAssertions - Pacote: FluentAssertions (v5.10.3)
-
-
