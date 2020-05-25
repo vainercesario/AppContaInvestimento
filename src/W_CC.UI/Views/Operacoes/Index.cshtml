@@ -1,0 +1,62 @@
+﻿@model IEnumerable<W_CC.Aplicacao.DTO.OperacoesViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+    IFormatProvider formatProvider = new System.Globalization.CultureInfo("pt-BR");
+}
+
+<h1 class="text-center">Conta Bancária</h1>
+<div class="row">
+    <div class="col-md-6 text-center">
+        <h3 class="font-weight-bold">R$ 90.000,00</h3>
+        <small class="font-weight-light">SALDO</small>
+    </div>
+    <div class="col-md-6 text-center">
+        <h3 class="font-weight-bold">20/05/2020</h3>
+        <small class="font-weight-light">Último Movimento</small>
+    </div>
+</div>
+<p class="text-center">
+    <a asp-action="Depositar">Depositar</a> | <a asp-action="Resgatar">Resgatar</a> | <a asp-action="Pagar">Pagar</a>
+</p>
+<div class="row">
+    <div class="offset-3 col-lg-6 ">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Data)
+                    </th>
+                    <th></th>
+                    <th class="text-right">
+                        @Html.DisplayNameFor(model => model.Valor)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Data)
+                        </td>
+                        <td class="text-center">
+                            @switch (item.TipoOperacao)
+                            {
+                                case TipoOperacao.Deposito:
+                                    @Html.Raw("<span class='badge badge-success'>Depósito</span>")
+                                    break;
+                                default:
+                                    @Html.Raw("<span class='badge badge-danger'>"+ item.TipoOperacao + "</span>")
+                                    break;
+                            }
+                        </td>
+                        <td class="text-right">
+                            @Html.Raw(item.Valor.ToString("C", formatProvider))
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

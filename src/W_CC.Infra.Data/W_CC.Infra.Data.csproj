@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200520082717_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200520082717_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200522025828_V1.cs" />
+    <Compile Remove="Migrations\20200522025828_V1.Designer.cs" />
+    <Compile Remove="Migrations\20200522032539_V2.cs" />
+    <Compile Remove="Migrations\20200522032539_V2.Designer.cs" />
+    <Compile Remove="Migrations\20200522032803_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200522032803_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200522035452_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200522035452_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200522040405_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200522040405_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200522043600_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200522043600_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200522172812_V2.cs" />
+    <Compile Remove="Migrations\20200522172812_V2.Designer.cs" />
+    <Compile Remove="Migrations\20200522173411_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200522173411_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200522173735_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200522173735_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200522202558_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200522202558_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200523025523_v2.cs" />
+    <Compile Remove="Migrations\20200523025523_v2.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.20" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\W_CC.Dominio.csproj" />
+  </ItemGroup>
+
+</Project>

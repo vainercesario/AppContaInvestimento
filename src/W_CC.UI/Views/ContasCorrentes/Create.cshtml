@@ -1,0 +1,48 @@
+﻿@model W_CC.Aplicacao.DTO.ContasCorrentesViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Conta Corrente</h1>
+
+<h4>Configuração</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Agencia" class="control-label"></label>
+                <input asp-for="Agencia" class="form-control" />
+                <span asp-validation-for="Agencia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Conta" class="control-label"></label>
+                <input asp-for="Conta" class="form-control" />
+                <span asp-validation-for="Conta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pessoa.Nome" class="control-label"></label>
+                <input asp-for="Pessoa.Nome" class="form-control" />
+                <span asp-validation-for="Pessoa.Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pessoa.CPF" class="control-label"></label>
+                <input asp-for="Pessoa.CPF" class="form-control" />
+                <span asp-validation-for="Pessoa.CPF" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

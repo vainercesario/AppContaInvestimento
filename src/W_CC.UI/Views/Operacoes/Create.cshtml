@@ -1,0 +1,30 @@
+﻿@model W_CC.Aplicacao.DTO.OperacoesViewModel
+
+<h1>Nova Operação</h1>
+
+<h4>@ViewBag.Title</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="TipoOperacao" type="hidden">
+            <div class="form-group">
+                <label asp-for="Valor" class="control-label"></label>
+                <input name="Valor" id="Valor" class="form-control" placeholder="R$ 0,00"/>
+                <span asp-validation-for="Valor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Adicionar" class="btn btn-sm btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-controller="ContasCorrentes">Voltar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
