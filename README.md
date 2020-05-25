@@ -57,6 +57,18 @@ Nos demais projetos da solução foram utilizados os seguintes componentes
 2. Banco de Dados MySql - Pacote: MySql.Data.EntityFrameworkCore (v8.0.20)
 3. AutoMapper - Pacote: AutoMapper.Extensions.Microsoft.DependencyInjection (v7.0.0)
 
+### Bugs e Recomendações de Pacotes Terceiros
+O pacote do MySql _MySql.Data.EntityFrameworkCore_ está com um bug bem pertinente, ao usar o Migrations apra criar e gerenciar o banco de dados, o mesmo não gera a tabela de gerenciamento do Migrations _efmigrationshistory_ sendo necessário adicionar manualmente a tabela:
+
+```
+CREATE TABLE `__EFMigrationsHistory` ( 
+  `MigrationId` nvarchar(150) NOT NULL, 
+  `ProductVersion` nvarchar(32) NOT NULL, 
+  PRIMARY KEY (`MigrationId`) );
+```
+
+Ainda nas limitações do MySql, usei os tipos de dados __Guid__ para as chaves primárias das tabelas, porém o MySql não identifica o tipo de dado e trata como __varbinary__.
+
 ### Cobertura de Testes
 Os testes desenvolvidos foram criados para dar sustentação nas principais operações do sistema, como a abertura de conta, depósito, pagamentos e resgate.
 
